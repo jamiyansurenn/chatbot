@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #0b0b0f;
+}
+
+.grid-glow {
+  background-image: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.15), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.12), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.12), transparent 50%);
+}
+
+.pulse-ring {
+  animation: pulse-ring 2.6s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 24px rgba(99, 102, 241, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
