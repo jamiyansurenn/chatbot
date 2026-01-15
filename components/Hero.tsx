@@ -22,9 +22,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mt-8 text-4xl font-semibold leading-tight md:text-6xl"
         >
-          Chatbot.mn шиг SaaS landing
+          ManyChat-тай өрсөлдөх,
           <span className="block bg-gradient-to-r from-purple-400 via-cyan-300 to-purple-500 bg-clip-text text-transparent">
-            ManyChat-тай өрсөлдөнө
+            Chatbot.mn шиг UX-тэй SaaS платформ
           </span>
         </motion.h1>
         <motion.p
@@ -33,8 +33,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-6 max-w-2xl text-lg text-slate-300"
         >
-          Бизнес бүрт тохирсон chatbot, автомат хариулагч, lead capture,
-          campaign-г нэг дор. Backendгүй, 1 click deploy-ready.
+          Бизнес бүрт тохирсон chatbot, автомат хариулагч, lead capture, campaign-ийг
+          нэг дор. Backend шаардлагагүй, 1 click deploy-ready.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 10 }}

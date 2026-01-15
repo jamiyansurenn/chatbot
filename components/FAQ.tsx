@@ -6,15 +6,15 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     question: "Backend хэрэгтэй юу?",
-    answer: "Үгүй. Энэ бол зөвхөн front demo бөгөөд Vercel-д 1 click deploy."
+    answer: "Үгүй, frontend-д суурилсан, API-д бэлэн."
   },
   {
-    question: "Pricing өөрчилж болох уу?",
-    answer: "Тийм. Үнэ, badge, feature жагсаалтыг шууд edit хийж болно."
+    question: "Үнийн багцыг өөрчилж болох уу?",
+    answer: "Болно, бизнесийн онцлогоос хамааруулна."
   },
   {
-    question: "ManyChat-тэй адил feature хийх боломжтой юу?",
-    answer: "Тийм. Flow builder, broadcast, analytics зэрэгийг нэмээд өсгөнө."
+    question: "ManyChat-тай адил feature хийх боломжтой юу?",
+    answer: "Тийм, мөн монгол хэлний давуу талтай."
   }
 ];
 

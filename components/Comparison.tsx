@@ -7,7 +7,7 @@ const competitors = ["Chatbot.mn", "ManyChat", "Chatfuel"];
 const rows = [
   { title: "Монгол хэлний NLP", values: [true, false, false] },
   { title: "No-code builder", values: [true, true, true] },
-  { title: "Local payment", values: [true, false, false] },
+  { title: "Дотоодын төлбөр", values: [true, false, false] },
   { title: "Analytics", values: [true, true, true] },
   { title: "24/7 Support", values: [true, false, false] }
 ];
@@ -23,7 +23,7 @@ export default function Comparison() {
           <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
             Chatbot.mn vs ManyChat vs Chatfuel
           </h2>
-          <p className="mt-3 text-slate-300">Шийдвэр гаргахад амар болгоё.</p>
+          <p className="mt-3 text-slate-300">Шийдвэр гаргахад хялбар болгоё.</p>
         </div>
 
         <div className="mt-10 hidden overflow-hidden rounded-2xl border border-slate-800 bg-[#111827] md:block">

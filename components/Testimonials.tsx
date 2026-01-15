@@ -5,19 +5,19 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Batzaya D.",
+    name: "Б. Батзаяа",
     role: "E-commerce founder",
-    quote: "7 хоногийн дотор chatbot-н conversion 2 дахин өссөн."
+    quote: "7 хоногийн дотор chatbot-ын conversion 2 дахин өссөн."
   },
   {
-    name: "Namuun L.",
+    name: "Н. Намуун",
     role: "Marketing lead",
-    quote: "ManyChat-с илүү ойлгомжтой, монгол хэл дээр бүрэн."
+    quote: "ManyChat-аас илүү ойлгомжтой, монгол хэл дээр бүрэн."
   },
   {
-    name: "Altan S.",
+    name: "А. Алтан",
     role: "Fintech COO",
-    quote: "Enterprise support нь хурдан, SLA яг цагтаа."
+    quote: "Enterprise support хурдан, SLA яг цагтаа."
   }
 ];
 
@@ -28,7 +28,7 @@ export default function Testimonials() {
         <div className="text-center">
           <p className="text-sm font-semibold uppercase text-purple-300">Testimonials</p>
           <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Хэрэглэгчдийн үнэлгээ</h2>
-          <p className="mt-3 text-slate-300">Бодит хэрэглэгчдийн сэтгэгдэл.</p>
+          <p className="mt-3 text-slate-300">Бодит хэрэглэгчдийн бодит үр дүн.</p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((item) => (

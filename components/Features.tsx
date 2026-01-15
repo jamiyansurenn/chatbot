@@ -6,32 +6,32 @@ import { Bot, ShieldCheck, Zap, LayoutDashboard, MessageCircle, Sparkles } from 
 const features = [
   {
     title: "AI хариулагч",
-    description: "Харилцагч бүрт 24/7 шууд хариулаж, борлуулалтыг алдахгүй.",
+    description: "Харилцагч бүрт 24/7 бодит мэт хариулж, борлуулалтыг алдахгүй.",
     icon: Bot
   },
   {
     title: "No-code builder",
-    description: "Flow builder ашиглаад 5 минутанд chatbot-г бүтээнэ.",
+    description: "Flow builder ашиглаад 5 минутанд chatbot бүтээнэ.",
     icon: LayoutDashboard
   },
   {
     title: "Campaign boost",
-    description: "Broadcast болон сегментчилэлтэй мессеж илгээ.",
+    description: "Broadcast, сегментчилэлтэй мессеж илгээж борлуулалтаа өсгө.",
     icon: Zap
   },
   {
     title: "CRM Ready",
-    description: "Лийд, tag, pipeline бүгд нэг дор хадгалагдана.",
+    description: "Лийд, tag, pipeline – бүгд нэг дор, эмх цэгцтэй.",
     icon: MessageCircle
   },
   {
     title: "Security first",
-    description: "Data encryption, log, backup бүгд enterprise түвшинд.",
+    description: "Enterprise түвшний encryption, log, backup.",
     icon: ShieldCheck
   },
   {
     title: "Premium motion",
-    description: "Hover animation, micro interaction-ууд premium мэдрэмж өгнө.",
+    description: "Hover animation, micro-interaction нь premium мэдрэмж өгнө.",
     icon: Sparkles
   }
 ];
@@ -44,7 +44,7 @@ export default function Features() {
           <p className="text-sm font-semibold uppercase text-purple-300">Features</p>
           <h2 className="text-3xl font-semibold md:text-4xl">Онцлогууд</h2>
           <p className="text-slate-300">
-            Chatbot.mn-тэй адил UX, ManyChat шиг scale хийх боломж.
+            Chatbot.mn-тэй адил ойлгомжтой UX, ManyChat шиг масштаблах боломж.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

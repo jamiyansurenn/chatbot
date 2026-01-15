@@ -6,28 +6,40 @@ import { CheckCircle2 } from "lucide-react";
 const plans = [
   {
     name: "PRO",
-    price: "300,000₮",
-    description: "Жижиг баг, growth startup-д.",
-    features: ["5 bot flow", "Unlimited leads", "Analytics dashboard", "Meta & Web chat"]
+    price: "200,000₮",
+    description: "Жижиг баг, гарааны бизнест.",
+    features: [
+      "3 bot flow",
+      "Unlimited leads",
+      "Basic analytics",
+      "Meta & Web chat",
+      "Email support"
+    ]
   },
   {
     name: "ENTERPRISE",
-    price: "900,000₮",
-    description: "Том байгууллагад зориулсан.",
+    price: "600,000₮",
+    description: "Өсөж буй болон том байгууллагад.",
     badge: "🔥 Хамгийн их сонгогдсон",
     highlight: true,
     features: [
       "Unlimited flow",
-      "Omni-channel",
-      "Dedicated success",
-      "Private onboarding"
+      "Omni-channel (Meta, Web, Telegram)",
+      "Advanced analytics",
+      "Dedicated success manager",
+      "Priority support"
     ]
   },
   {
     name: "VIP",
     price: "Custom",
-    description: "Салбар бүрт тусгай шийдэл.",
-    features: ["Custom integration", "Advanced AI", "24/7 support", "Security audit"]
+    description: "Салбар бүрт зориулсан тусгай шийдэл.",
+    features: [
+      "Custom integration",
+      "Advanced AI logic",
+      "24/7 premium support",
+      "Security audit & SLA"
+    ]
   }
 ];
 
@@ -36,9 +48,11 @@ export default function Pricing() {
     <section className="px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase text-purple-300">Pricing</p>
+          <p className="text-sm font-semibold uppercase text-purple-300">
+            Pricing · 200,000₮-с эхэлнэ
+          </p>
           <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Үнийн багцууд</h2>
-          <p className="mt-3 text-slate-300">Монгол зах зээлд тохируулсан.</p>
+          <p className="mt-3 text-slate-300">Монгол зах зээлд бодитоор тохируулсан.</p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
