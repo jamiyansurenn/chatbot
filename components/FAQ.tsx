@@ -5,16 +5,16 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Backend хэрэгтэй юу?",
-    answer: "Үгүй, frontend-д суурилсан, API-д бэлэн."
+    question: "ChatGPT-тэй хэрхэн холбох вэ?",
+    answer: "OPENAI_API_KEY тохируулж, /api/chat endpoint-оор холбож ашиглана."
   },
   {
-    question: "Үнийн багцыг өөрчилж болох уу?",
-    answer: "Болно, бизнесийн онцлогоос хамааруулна."
+    question: "Туршиж үзэх товч юу хийдэг вэ?",
+    answer: "Chatbot үүсгэх алхмуудын заавартай /build хуудсыг нээнэ."
   },
   {
-    question: "ManyChat-тай адил feature хийх боломжтой юу?",
-    answer: "Тийм, мөн монгол хэлний давуу талтай."
+    question: "Хэрхэн датаг шинэчилж сайжруулах вэ?",
+    answer: "FAQ, бүтээгдэхүүний мэдээллээ шинэчилж, тест хийснээр хариулт сайжирна."
   }
 ];
 

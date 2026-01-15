@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -22,9 +23,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mt-8 text-4xl font-semibold leading-tight md:text-6xl"
         >
-          ManyChat-тай өрсөлдөх,
+          Монгол хэл дээрх автоматжуулалттай платформ,
           <span className="block bg-gradient-to-r from-purple-400 via-cyan-300 to-purple-500 bg-clip-text text-transparent">
-            Chatbot.mn шиг UX-тэй SaaS платформ
+          Chatbot ManyChat-ийн функционалтай.
           </span>
         </motion.h1>
         <motion.p
@@ -34,7 +35,7 @@ export default function Hero() {
           className="mt-6 max-w-2xl text-lg text-slate-300"
         >
           Бизнес бүрт тохирсон chatbot, автомат хариулагч, lead capture, campaign-ийг
-          нэг дор. Backend шаардлагагүй, 1 click deploy-ready.
+          нэг дор.  1 click deploy-ready.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -42,13 +43,19 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <button className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:scale-[1.03]">
+          <Link
+            href="/build"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:scale-[1.03]"
+          >
             Туршиж үзэх
             <ArrowRight size={16} />
-          </button>
-          <button className="rounded-full border border-slate-700 px-6 py-3 text-sm text-slate-200 transition hover:border-purple-400 hover:text-white">
+          </Link>
+          <Link
+            href="/chat"
+            className="rounded-full border border-slate-700 px-6 py-3 text-sm text-slate-200 transition hover:border-purple-400 hover:text-white"
+          >
             Демо харах
-          </button>
+          </Link>
         </motion.div>
       </div>
 

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Chatflow Front",
-  description: "Chatbot.mn / ManyChat-тай адилхан SaaS landing page"
+  description: "Chatbot / ManyChat-тай адилхан SaaS landing page"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

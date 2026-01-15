@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import ChatModal from "./ChatModal";
 
 const plans = [
   {
@@ -44,6 +46,9 @@ const plans = [
 ];
 
 export default function Pricing() {
+  const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string | undefined>(undefined);
+
   return (
     <section className="px-6 py-20">
       <div className="mx-auto max-w-6xl">
@@ -81,13 +86,27 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <button className="mt-8 w-full rounded-full border border-slate-700 py-3 text-sm font-semibold transition hover:border-purple-400 hover:text-white">
+              <button
+                onClick={() => {
+                  setSelectedPlan(plan.name);
+                  setOpen(true);
+                }}
+                className="mt-8 w-full rounded-full border border-slate-700 py-3 text-sm font-semibold transition hover:border-purple-400 hover:text-white"
+              >
                 Хүсэлт илгээх
               </button>
+              <p className="mt-4 text-center text-xs text-slate-500">
+                Хаанбанк · Jamiyansuren · 5249379237
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
+      <ChatModal
+        open={open}
+        onClose={() => setOpen(false)}
+        planName={selectedPlan}
+      />
     </section>
   );
 }

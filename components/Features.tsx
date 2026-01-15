@@ -44,7 +44,7 @@ export default function Features() {
           <p className="text-sm font-semibold uppercase text-purple-300">Features</p>
           <h2 className="text-3xl font-semibold md:text-4xl">Онцлогууд</h2>
           <p className="text-slate-300">
-            Chatbot.mn-тэй адил ойлгомжтой UX, ManyChat шиг масштаблах боломж.
+            Chatbot ManyChat шиг масштаблах боломж.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

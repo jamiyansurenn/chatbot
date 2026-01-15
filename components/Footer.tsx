@@ -14,7 +14,8 @@ export default function Footer() {
           <Mail size={18} />
         </div>
         <div className="text-center text-xs text-slate-500 md:text-right">
-          <p>© 2026 Chatbot.mn inspired</p>
+          <p>Хаанбанк · Jamiyansuren · 5249379237</p>
+          <p className="mt-2">© 2026 Chatbot.mn inspired</p>
           <p className="mt-2">Үйлчилгээний нөхцөл · Нууцлалын бодлого</p>
         </div>
       </div>
