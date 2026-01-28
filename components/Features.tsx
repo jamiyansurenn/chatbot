@@ -38,12 +38,12 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="px-6 py-20">
+    <section id="features" className="px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-4 text-center">
-          <p className="text-sm font-semibold uppercase text-purple-300">Features</p>
-          <h2 className="text-3xl font-semibold md:text-4xl">Онцлогууд</h2>
-          <p className="text-slate-300">
+          <p className="text-sm font-semibold uppercase text-rose-500">Features</p>
+          <h2 className="text-3xl font-semibold text-slate-900 md:text-4xl">Онцлогууд</h2>
+          <p className="text-slate-600">
             Chatbot ManyChat шиг масштаблах боломж.
           </p>
         </div>
@@ -55,14 +55,14 @@ export default function Features() {
                 key={feature.title}
                 whileHover={{ scale: 1.03, y: -4 }}
                 transition={{ type: "spring", stiffness: 200, damping: 18 }}
-                className="rounded-2xl border border-slate-800 bg-[#111827] p-6 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/30"
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/15 text-purple-200">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-50 text-rose-500">
                   <Icon size={24} />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold">{feature.title}</h3>
-                <p className="mt-2 text-sm text-slate-300">{feature.description}</p>
-                <p className="mt-4 text-xs text-slate-500">#{index + 1}</p>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900">{feature.title}</h3>
+                <p className="mt-2 text-sm text-slate-600">{feature.description}</p>
+                <p className="mt-4 text-xs text-slate-400">#{index + 1}</p>
               </motion.div>
             );
           })}

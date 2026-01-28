@@ -1,113 +1,162 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Send } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-type ChatMessage = {
-  role: "user" | "assistant";
-  content: string;
+type AuthUser = {
+  id: string;
+  name: string;
+  email: string;
 };
 
-const starterMessages: ChatMessage[] = [
-  {
-    role: "assistant",
-    content:
-      "Сайн байна уу! Би таны chatbot туслах. Бизнесийнхээ талаар товч хэлээд, ямар зорилгоор chatbot хэрэгтэйг бичээрэй."
-  }
-];
-
 export default function ChatPage() {
-  const [messages, setMessages] = useState<ChatMessage[]>(starterMessages);
-  const [input, setInput] = useState("");
+  const router = useRouter();
+  const [mode, setMode] = useState<"login" | "register">("login");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState<AuthUser | null>(null);
 
-  const canSend = useMemo(() => input.trim().length > 0 && !loading, [input, loading]);
+  useEffect(() => {
+    const loadSession = async () => {
+      const response = await fetch("/api/auth/session");
+      const data = (await response.json()) as { user?: AuthUser | null };
+      setCurrentUser(data.user || null);
+    };
+    loadSession();
+  }, []);
 
-  const sendMessage = async () => {
-    if (!canSend) return;
-    const nextMessages = [...messages, { role: "user", content: input.trim() }];
-    setMessages(nextMessages);
-    setInput("");
+  const submit = async () => {
+    setMessage(null);
     setLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const endpoint = mode === "login" ? "/api/auth/login" : "/api/auth/register";
+      const payload =
+        mode === "login"
+          ? { email, password }
+          : { name: name.trim(), email, password };
+
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages })
+        body: JSON.stringify(payload)
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data?.error || "Алдаа гарлаа.");
+
+      const data = (await response.json()) as { user?: AuthUser; error?: string };
+
+      if (!response.ok || !data.user) {
+        throw new Error(data.error || "Алдаа гарлаа.");
       }
-      setMessages([...nextMessages, { role: "assistant", content: data.reply }]);
+
+      setCurrentUser(data.user);
+      setMessage("Амжилттай.");
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Алдаа гарлаа.";
-      setMessages([
-        ...nextMessages,
-        { role: "assistant", content: `⚠️ ${message}` }
-      ]);
+      const fallback = error instanceof Error ? error.message : "Алдаа гарлаа.";
+      setMessage(fallback);
     } finally {
       setLoading(false);
     }
   };
 
+  const logout = () => {
+    fetch("/api/auth/logout", { method: "POST" }).finally(() => {
+      setCurrentUser(null);
+    });
+  };
+
   return (
-    <main className="px-6 py-20">
-      <div className="mx-auto flex max-w-4xl flex-col gap-6">
+    <main className="bg-white px-6 py-20">
+      <div className="mx-auto flex max-w-3xl flex-col gap-6">
         <div>
-          <p className="text-sm font-semibold uppercase text-purple-300">Live chat</p>
-          <h1 className="mt-3 text-3xl font-semibold md:text-4xl">
-            ChatGPT-powered demo
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-500">
+            Demo
+          </p>
+          <h1 className="mt-4 text-3xl font-semibold text-slate-900 md:text-4xl">
+            kdl.mn — {mode === "login" ? "Нэвтрэх" : "Бүртгүүлэх"}
           </h1>
-          <p className="mt-3 text-slate-300">
-            Энэ хэсэг жинхэнэ GPT API-тай холбогдоно. API key нэмсэн үед ажиллана.
+          <p className="mt-3 text-slate-600">
+            Demo-ыг хэрэглэгчийн нэвтрэх хэлбэрээр үзүүлнэ.
           </p>
         </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-[#111827] p-6 shadow-lg shadow-purple-500/10">
-          <div className="space-y-4">
-            {messages.map((message, index) => (
-              <div
-                key={`${message.role}-${index}`}
-                className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                  message.role === "user"
-                    ? "ml-auto bg-purple-500/20 text-slate-100"
-                    : "bg-[#0f1422] text-slate-200"
-                }`}
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          {currentUser ? (
+            <div className="space-y-4 text-sm text-slate-600">
+              <div>
+                <p className="text-slate-500">Тавтай морилно уу</p>
+                <p className="mt-1 text-lg font-semibold text-slate-900">
+                  {currentUser.name}
+                </p>
+                <p className="text-slate-500">{currentUser.email}</p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  onClick={() => router.push("/dashboard/bots")}
+                  className="rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-rose-600"
+                >
+                  Бот үүсгэх
+                </button>
+                <button
+                  onClick={logout}
+                  className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-600 hover:border-slate-300"
+                >
+                  Гарах
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-5">
+              {mode === "register" && (
+                <div>
+                  <label className="text-sm font-semibold text-slate-700">Нэр</label>
+                  <input
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    type="text"
+                    placeholder="Таны нэр"
+                    className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-rose-400 focus:outline-none"
+                  />
+                </div>
+              )}
+              <div>
+                <label className="text-sm font-semibold text-slate-700">Имэйл</label>
+                <input
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  type="email"
+                  placeholder="name@kdl.mn"
+                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-rose-400 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold text-slate-700">Нууц үг</label>
+                <input
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  type="password"
+                  placeholder="********"
+                  className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-rose-400 focus:outline-none"
+                />
+              </div>
+              <button
+                onClick={submit}
+                disabled={loading}
+                className="w-full rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-rose-600 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {message.content}
-              </div>
-            ))}
-            {loading && (
-              <div className="rounded-2xl bg-[#0f1422] px-4 py-3 text-sm text-slate-400">
-                Бичиж байна...
-              </div>
-            )}
-          </div>
-
-          <div className="mt-6 flex gap-3">
-            <input
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              placeholder="Мессежээ бичээрэй..."
-              className="flex-1 rounded-full border border-slate-700 bg-[#0f1422] px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-purple-400 focus:outline-none"
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  event.preventDefault();
-                  sendMessage();
-                }
-              }}
-            />
-            <button
-              type="button"
-              onClick={sendMessage}
-              disabled={!canSend}
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 px-5 text-sm font-semibold text-white shadow-lg shadow-purple-500/20 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              <Send size={18} />
-            </button>
-          </div>
+                {loading ? "Түр хүлээнэ үү..." : mode === "login" ? "Нэвтрэх" : "Бүртгүүлэх"}
+              </button>
+              <button
+                onClick={() => setMode(mode === "login" ? "register" : "login")}
+                className="w-full rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-600 hover:border-slate-300"
+              >
+                {mode === "login" ? "Бүртгүүлэх" : "Нэвтрэх"}
+              </button>
+              {message && <p className="text-center text-xs text-slate-500">{message}</p>}
+            </div>
+          )}
         </div>
       </div>
     </main>

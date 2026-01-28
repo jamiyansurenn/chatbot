@@ -26,26 +26,28 @@ export default function Testimonials() {
     <section className="px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase text-purple-300">Testimonials</p>
-          <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Хэрэглэгчдийн үнэлгээ</h2>
-          <p className="mt-3 text-slate-300">Бодит хэрэглэгчдийн бодит үр дүн.</p>
+          <p className="text-sm font-semibold uppercase text-rose-500">Testimonials</p>
+          <h2 className="mt-3 text-3xl font-semibold text-slate-900 md:text-4xl">
+            Хэрэглэгчдийн үнэлгээ
+          </h2>
+          <p className="mt-3 text-slate-600">Бодит хэрэглэгчдийн бодит үр дүн.</p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((item) => (
             <motion.div
               key={item.name}
               whileHover={{ y: -6 }}
-              className="rounded-2xl border border-slate-800 bg-[#111827] p-6 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/30"
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md"
             >
-              <div className="flex items-center gap-1 text-amber-300">
+              <div className="flex items-center gap-1 text-amber-400">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star key={idx} size={16} fill="currentColor" />
                 ))}
               </div>
-              <p className="mt-4 text-sm text-slate-200">"{item.quote}"</p>
+              <p className="mt-4 text-sm text-slate-700">"{item.quote}"</p>
               <div className="mt-6">
-                <p className="text-sm font-semibold">{item.name}</p>
-                <p className="text-xs text-slate-400">{item.role}</p>
+                <p className="text-sm font-semibold text-slate-900">{item.name}</p>
+                <p className="text-xs text-slate-500">{item.role}</p>
               </div>
             </motion.div>
           ))}

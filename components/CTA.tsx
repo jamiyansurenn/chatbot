@@ -9,25 +9,27 @@ export default function CTA() {
   const [chatOpen, setChatOpen] = useState(false);
 
   return (
-    <section className="px-6 py-20">
-      <div className="mx-auto max-w-5xl rounded-3xl border border-slate-800 bg-[#111827] p-10 text-center shadow-lg shadow-purple-500/10 md:p-14">
-        <p className="text-sm font-semibold uppercase text-purple-300">CTA</p>
-        <h2 className="mt-3 text-3xl font-semibold md:text-4xl">CHATBOT-Г ТУРШИЖ ҮЗЭЭРЭЙ</h2>
-        <p className="mt-4 text-slate-300">
+    <section id="cta" className="px-6 py-20">
+      <div className="mx-auto max-w-5xl rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-sm md:p-14">
+        <p className="text-sm font-semibold uppercase text-rose-500">CTA</p>
+        <h2 className="mt-3 text-3xl font-semibold text-slate-900 md:text-4xl">
+          CHATBOT-Г ТУРШИЖ ҮЗЭЭРЭЙ
+        </h2>
+        <p className="mt-4 text-slate-600">
           5 минутанд таны бизнесийн chatbot-г амилуулъя.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <motion.div whileHover={{ scale: 1.04 }} className="pulse-ring">
             <Link
               href="/build"
-              className="inline-flex rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30"
+              className="inline-flex rounded-full bg-rose-500 px-8 py-3 text-sm font-semibold text-white shadow-md hover:bg-rose-600"
             >
-            Туршиж үзэх
+              Туршиж үзэх
             </Link>
           </motion.div>
           <button
             onClick={() => setChatOpen(true)}
-            className="rounded-full border border-slate-700 px-8 py-3 text-sm text-slate-200 transition hover:border-purple-400 hover:text-white"
+            className="rounded-full border border-slate-300 px-8 py-3 text-sm text-slate-700 transition hover:border-slate-400"
           >
             Үнийн хүсэлт
           </button>

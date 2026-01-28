@@ -2,66 +2,115 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+
+const navLinks = [
+  { label: "Үйлчилгээ", href: "#features" },
+  { label: "Үнэ", href: "#pricing" },
+  { label: "Боломж", href: "#cta" }
+];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-20 pt-28">
-      <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm text-purple-200"
-        >
-          <Sparkles size={16} />
-          Монгол хэл дээрх автоматжуулалт
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-8 text-4xl font-semibold leading-tight md:text-6xl"
-        >
-          Монгол хэл дээрх автоматжуулалттай платформ,
-          <span className="block bg-gradient-to-r from-purple-400 via-cyan-300 to-purple-500 bg-clip-text text-transparent">
-          Chatbot ManyChat-ийн функционалтай.
+    <section className="relative overflow-hidden bg-white px-6 pb-20 pt-6">
+      <header className="mx-auto flex max-w-6xl items-center justify-between gap-6">
+        <div className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-rose-500 text-sm font-semibold text-white">
+            CB
           </span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-lg text-slate-300"
-        >
-          Бизнес бүрт тохирсон chatbot, автомат хариулагч, lead capture, campaign-ийг
-          нэг дор.  1 click deploy-ready.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row"
-        >
+          kdl.mn
+        </div>
+        <nav className="hidden items-center gap-8 text-sm text-slate-600 md:flex">
+          {navLinks.map((link) => (
+            <Link key={link.label} href={link.href} className="hover:text-slate-900">
+              {link.label}
+            </Link>
+          ))}
+          <button className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900">
+            MN <ChevronDown size={14} />
+          </button>
+        </nav>
+        <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/build"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition hover:scale-[1.03]"
+            className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-400"
           >
-            Туршиж үзэх
-            <ArrowRight size={16} />
+            Нэвтрэх
           </Link>
           <Link
-            href="/chat"
-            className="rounded-full border border-slate-700 px-6 py-3 text-sm text-slate-200 transition hover:border-purple-400 hover:text-white"
+            href="/build"
+            className="rounded-full bg-rose-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-600"
           >
-            Демо харах
+            Бүртгүүлэх
           </Link>
-        </motion.div>
-      </div>
+        </div>
+      </header>
 
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-24 h-64 w-64 -translate-x-1/2 rounded-full bg-purple-500/20 blur-[120px]" />
-        <div className="absolute right-10 top-32 h-64 w-64 rounded-full bg-cyan-400/20 blur-[120px]" />
+      <div className="mx-auto mt-14 grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_1.2fr_1fr]">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-center"
+        >
+          <div className="relative h-[340px] w-[260px] overflow-hidden rounded-[48px] bg-slate-100 shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80"
+              alt="Happy customer"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </motion.div>
+
+        <div className="text-center lg:text-left">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            Таны бизнесийн төлөөл
+          </p>
+          <h1 className="mt-4 text-3xl font-bold leading-tight text-slate-900 md:text-5xl">
+            Харилцагчаа
+            <span className="block text-rose-500">хэрэглэгч болго</span>
+          </h1>
+          <p className="mt-5 text-base text-slate-600 md:text-lg">
+            Хүн бүрт зориулсан виртуал туслах. Монгол хэл дээрх автомат хариулагч,
+            chatbot шийдэл.
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+            <Link
+              href="/build"
+              className="inline-flex items-center gap-2 rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-rose-600"
+            >
+              Танилцуулга татах
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/chat"
+              className="rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-700 hover:border-slate-400"
+            >
+              Demo үзэх
+            </Link>
+          </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative flex items-center justify-center"
+        >
+          <div className="relative h-[360px] w-[200px] overflow-hidden rounded-[36px] border border-slate-200 bg-white shadow-xl">
+            <img
+              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80"
+              alt="Chatbot app preview"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="absolute -left-4 top-20 max-w-[140px] rounded-xl bg-white p-3 text-xs text-slate-600 shadow-lg">
+            Сайн байна уу, kdl.mn танд тусалж байна.
+          </div>
+          <div className="absolute -right-6 bottom-20 max-w-[150px] rounded-xl bg-rose-500 p-3 text-xs text-white shadow-lg">
+            Чатбот гэж юу вэ?
+          </div>
+        </motion.div>
       </div>
     </section>
   );
