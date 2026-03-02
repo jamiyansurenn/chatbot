@@ -32,13 +32,13 @@ export default function Hero() {
         </nav>
         <div className="hidden items-center gap-3 md:flex">
           <Link
-            href="/build"
+            href="/login"
             className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-slate-400"
           >
             Нэвтрэх
           </Link>
           <Link
-            href="/build"
+            href="/register"
             className="rounded-full bg-rose-500 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-600"
           >
             Бүртгүүлэх
