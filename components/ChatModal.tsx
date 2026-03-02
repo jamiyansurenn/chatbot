@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+
+const STATIC_EMAIL = "demo@chatbot.mn";
+const STATIC_PASSWORD = "demo1234";
 
 type ChatModalProps = {
   open: boolean;
@@ -12,6 +16,24 @@ type ChatModalProps = {
 
 export default function ChatModal({ open, onClose, planName }: ChatModalProps) {
   const [showForm, setShowForm] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    if (email === STATIC_EMAIL && password === STATIC_PASSWORD) {
+      onClose();
+      setShowForm(false);
+      setEmail("");
+      setPassword("");
+      router.push("/dashboard");
+    } else {
+      setError("Имэйл эсвэл нууц үг буруу байна. (demo@chatbot.mn / demo1234)");
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -70,19 +92,29 @@ export default function ChatModal({ open, onClose, planName }: ChatModalProps) {
                 Дараагийн алхам
               </button>
             ) : (
-              <form className="mt-6 space-y-4">
+              <form onSubmit={handleLogin} className="mt-6 space-y-4">
                 <input
                   type="email"
                   placeholder="Имэйл хаяг"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-rose-400 focus:outline-none"
                 />
                 <input
                   type="password"
                   placeholder="Нууц үг"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:border-rose-400 focus:outline-none"
                 />
+                {error && (
+                  <p className="text-xs text-rose-600">{error}</p>
+                )}
+                <p className="text-xs text-slate-500">
+                  Демо: <code className="rounded bg-slate-100 px-1">demo@chatbot.mn</code> / <code className="rounded bg-slate-100 px-1">demo1234</code>
+                </p>
                 <button
-                  type="button"
+                  type="submit"
                   className="w-full rounded-full bg-rose-500 px-6 py-3 text-sm font-semibold text-white hover:bg-rose-600"
                 >
                   Нэвтрэх / Бүртгүүлэх
